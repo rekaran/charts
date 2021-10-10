@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verox Charting API</title>
+	<script type="text/javascript" src="/charting_library/charting_library/charting_library.js"></script>
+	<script type="text/javascript" src="/charting_library/datafeeds/udf/dist/bundle.js"></script>
+	<script type="text/javascript" src="/charting_library/datafeeds/udf/dist/polyfills.js"></script>
+    
+    <script type="text/javascript">
+        function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function initOnReady() {
+        var widget = window.tvWidget = new TradingView.widget({
+            // debug: true, // uncomment this line to see Library errors and warnings in the console
+            fullscreen: true,
+            symbol: getParameterByName('coin'),
+            interval: '60',
+            container_id: "tv_chart_container",
+
+            //	BEWARE: no trailing slash is expected in feed URL
+            datafeed: new Datafeeds.UDFCompatibleDatafeed("http://localhost:3000"),
+            library_path: "/charting_library/charting_library/",
+            locale: getParameterByName('lang') || "en",
+
+            disabled_features: ["header_saveload", "header_compare", "header_symbol_search"],
+            enabled_features: [],
+            charts_storage_api_version: "1.1",
+            client_id: 'veroxai.com',
+            theme: "dark",
+            // custom_css_url should be related to library_path
+            custom_css_url: '/theme.css',
+            loading_screen: { backgroundColor: "#1A202C" },
+            overrides: {
+                "paneProperties.background": "#1A202C"
+            },
+            favorites: {
+                intervals: ["5", "30", "60", "120"],
+                chartTypes: ["Candles", "Area"]
+            }
+        });
+    };
+
+window.addEventListener('DOMContentLoaded', initOnReady, false);
+    </script>
+</head>
+<body style="margin: 0;">
+    <div id="tv_chart_container"></div>
+</body>
+</html>

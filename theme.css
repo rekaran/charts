@@ -1,0 +1,15 @@
+:root {
+    --tv-color-platform-background: #1A202C;
+    --tv-color-pane-background: #1A202C;
+    --tv-color-pane-background-secondary: #1A202C;
+    --tv-color-toolbar-button-background-hover: #1A202C;
+    --tv-color-toolbar-button-background-secondary-hover: #1A202C;
+    --tv-color-toolbar-button-background-expanded: #1A202C;
+    --tv-color-toolbar-button-text: rgb(136, 24, 79);
+    --tv-color-toolbar-button-text-hover: rgb(74, 20, 140);
+    --tv-color-toolbar-button-text-active: red;
+    --tv-color-toolbar-button-text-active-hover: red;
+    --tv-color-item-active-text: rgb(6, 255, 6);
+    --tv-color-toolbar-toggle-button-background-active: #1A202C;
+    --tv-color-toolbar-toggle-button-background-active-hover: #1A202C;
+}
